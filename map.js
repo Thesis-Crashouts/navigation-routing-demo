@@ -67,13 +67,16 @@ function findNearestRoutes(start, end) {
 		if (distEnd < 150) nearbyEndRoutes.push(feature.properties.name);
 	}
 
-	console.log("Start is near routes:", nearbyStartRoutes);
-	console.log("End is near routes:", nearbyEndRoutes);
 	const path = findMinimalTransfers(
 		jeepneyGraph,
 		nearbyStartRoutes,
 		nearbyEndRoutes
 	);
+
+	if (path) highlightPath(path);
+
+	console.log("Start is near routes:", nearbyStartRoutes);
+	console.log("End is near routes:", nearbyEndRoutes);
 	console.log("Minimal transfer path:", path);
 }
 
